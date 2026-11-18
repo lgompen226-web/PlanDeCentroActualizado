@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GT-T1-05 · Plan de Centro actualizado · Infografía de proceso</title>
+<style>
+  :root{
+    --ink:#1d2430; --muted:#556070; --line:#d9dee6; --bg:#ffffff; --paper:#f6f7f9;
+    --deleg:#1f5fa8; --desc:#6a3fa0; --disc:#a14f00; --dili:#23704a;
+    --docente:#0d5c63; --ia:#5b3e96; --nota:#8a6d00; --notabg:#fff8e1;
+    --mode:#1f5fa8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
+  .page{max-width:820px;margin:24px auto;background:var(--bg);padding:28px 32px;border:1px solid var(--line);border-radius:10px}
+  h1{font-size:26px;margin:4px 0 2px;line-height:1.15}
+  h2{font-size:17px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  h2 .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px}
+  section{margin-top:22px}
+  p{margin:0 0 8px}
+  .eyebrow{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .sub{color:var(--muted);margin:0}
+
+  /* Cabecera */
+  header{border-bottom:3px solid var(--ink);padding-bottom:14px}
+  .head-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+  .badge-mode{flex:none;border:2px solid var(--mode);color:var(--mode);border-radius:10px;padding:8px 12px;text-align:center;min-width:150px}
+  .badge-mode .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+  .badge-mode .v{font-size:17px;font-weight:700}
+  .badge-mode .h{font-size:12px;color:var(--muted)}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 14px;margin-top:12px;font-size:13.5px}
+  .meta div b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+
+  /* Punto de partida */
+  .partida{background:var(--paper);border-radius:8px;padding:12px 14px;font-size:15.5px}
+
+  /* Flujo */
+  .timeline{list-style:none;margin:0;padding:0;position:relative}
+  .timeline:before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:10px;margin-bottom:10px}
+  .step .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid;z-index:1}
+  .step .dot svg{width:22px;height:22px}
+  .step.docente .dot{border-color:var(--docente);color:var(--docente)}
+  .step.ia .dot{border-color:var(--ia);color:var(--ia)}
+  .step.mixto .dot{border-color:var(--docente);color:var(--docente);border-style:dashed}
+  .step .body{border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+  .who{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;color:#fff;margin-right:6px}
+  .who.docente{background:var(--docente)} .who.ia{background:var(--ia)}
+  .out{display:inline-block;margin-top:4px;font-size:13px;background:var(--paper);border-radius:4px;padding:2px 8px}
+  .legend{display:flex;gap:14px;font-size:12.5px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+
+  /* 4D */
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .card{border:1px solid var(--line);border-top:5px solid;border-radius:8px;padding:10px 12px}
+  .card h3{margin:0 0 6px;font-size:15px}
+  .card.deleg{border-top-color:var(--deleg)} .card.deleg h3{color:var(--deleg)}
+  .card.desc{border-top-color:var(--desc)} .card.desc h3{color:var(--desc)}
+  .card.disc{border-top-color:var(--disc)} .card.disc h3{color:var(--disc)}
+  .card.dili{border-top-color:var(--dili)} .card.dili h3{color:var(--dili)}
+
+  /* Notas didácticas */
+  .nota{border-left:4px solid var(--nota);background:var(--notabg);border-radius:0 6px 6px 0;padding:6px 10px;font-size:13.5px;margin-top:8px}
+  .nota b{color:var(--nota);font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block}
+
+  /* Prompt */
+  .prompt{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13.5px;background:#fbfbfc;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .prompt div{margin:4px 0}
+  .tag{display:inline-block;min-width:92px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:4px;margin-right:6px;text-align:center}
+  .t-ctx{background:#e3eefb;color:#174a85} .t-tarea{background:#ece4f7;color:#4f2c80}
+  .t-formato{background:#e2f2e9;color:#1b5a3b} .t-crit{background:#fbe9dc;color:#7f3f00} .t-mat{background:#eef0f3;color:#3a4350}
+  .missing{color:var(--muted);font-style:italic}
+
+  /* DUA */
+  .dua{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .dua .card{border-top-color:var(--ink)}
+  .dua ul{margin:0;padding-left:18px;font-size:13.5px}
+  .ok{margin-top:10px;font-size:13.5px}
+  .ok svg{width:16px;height:16px;vertical-align:-3px;color:var(--dili)}
+
+  /* Resultado */
+  .stats{display:flex;gap:10px;flex-wrap:wrap}
+  .stat{border:1px solid var(--line);border-radius:8px;padding:8px 14px;min-width:150px}
+  .stat b{display:block;font-size:20px}
+  .stat span{font-size:12.5px;color:var(--muted)}
+
+  /* Pruébalo y comprueba */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  ol.try,ul.check{margin:0;padding-left:20px}
+  ol.try li,ul.check li{margin-bottom:6px}
+  ul.check{list-style:none;padding-left:0}
+  ul.check li{padding-left:24px;position:relative}
+  ul.check li:before{content:"☐";position:absolute;left:0;top:-1px;font-size:16px}
+  .box{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .box.nota-box{border-left:4px solid var(--nota)}
+
+  footer{margin-top:24px;border-top:1px solid var(--line);padding-top:10px;font-size:12px;color:var(--muted)}
+  footer p{margin:0 0 4px}
+
+  @media (max-width:640px){
+    .page{padding:18px 16px;margin:0;border-radius:0}
+    .meta{grid-template-columns:1fr 1fr}
+    .grid4,.dua,.two{grid-template-columns:1fr}
+    .head-top{flex-direction:column}
+  }
+  @page{size:A4 portrait;margin:10mm}
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .page{border:none;margin:0;padding:0;max-width:none}
+    .card,.step,.box,.stat,.prompt,.partida,.nota{break-inside:avoid}
+    section{break-inside:auto}
+    h2{break-after:avoid;margin-bottom:6px}
+    section{margin-top:12px}
+    header{padding-bottom:8px}
+    .step{margin-bottom:6px}
+    .step .body,.card,.box{padding:6px 10px}
+    .nota{margin-top:5px;padding:4px 8px}
+    .partida{padding:8px 12px}
+    footer{margin-top:12px}
+    #resultado .stat{padding:4px 10px;min-width:0}
+    #resultado .stat b{font-size:15px;display:inline;margin-right:6px}
+    .grid4{gap:8px} .dua{gap:8px}
+    p{margin-bottom:4px}
+    h1{font-size:22px} h2{font-size:15px}
+    .legend{display:none}
+    .meta{margin-top:6px;gap:3px 14px}
+    .prompt{padding:6px 10px} .prompt div{margin:2px 0}
+    .dua ul li,.check li,.try li{margin-bottom:2px}
+    .step .dot{width:36px;height:36px} .step{grid-template-columns:36px 1fr}
+    .timeline:before{left:17px}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-docente" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-ia" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-mixto" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 19c0-3.3 2.5-5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="13" y="11" width="8.5" height="8.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15.7" y="13.7" width="3" height="3" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="page">
+  <header>
+    <div class="head-top">
+      <div>
+        <div class="eyebrow">GT-T1-05 · Infografía de proceso · Banco de usos de IA docente</div>
+        <h1>Plan de Centro actualizado</h1>
+        <p class="sub">Así lo hicieron Mª José y Abraham: la IA revisa el Plan de Centro con la normativa vigente y la pareja lo comprueba punto a punto, sin IA.</p>
+      </div>
+      <div class="badge-mode" role="note" aria-label="Modo de uso de la IA: Aumentación">
+        <div class="k">Modo de uso</div>
+        <div class="v">Aumentación</div>
+        <div class="h">varias vueltas · pide, revisa, corrige</div>
+      </div>
+    </div>
+    <div class="meta"><div><b>Docentes</b>Mª José Cabeza Mateos y Abraham Rivera Gómez Arevalillo</div><div><b>Etapa · nivel</b>Infantil y Primaria · todo el centro</div><div><b>Línea de trabajo</b>c) Gestión de centro · d) DUA</div><div><b>Punto de partida</b>Un documento propio</div><div><b>Herramienta</b>Gemini (autorizada)</div><div><b>Dedicación</b>5 sesiones de 10 a 14 h</div></div>
+  </header>
+
+  <section id="partida">
+    <h2><span class="num">1</span>El punto de partida</h2>
+    <p class="partida">Mª José y Abraham necesitaban actualizar y contextualizar el Plan de Centro conforme a la legislación vigente, para llevar después las modificaciones a la aprobación del claustro.</p>
+  </section>
+
+  <section id="flujo">
+    <h2><span class="num">2</span>El flujo, paso a paso</h2>
+    <div class="legend">
+      <span><span class="who docente">Docente</span>decide y revisa</span>
+      <span><span class="who ia">IA</span>ejecuta el encargo</span>
+    </div>
+    <ol class="timeline">
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Reúnen</b> el Plan de Centro vigente y la legislación actualizada, y fijan premisas concretas y objetivos claros para evitar y prevenir situaciones no deseadas.</div></li>
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Piden</b> a la IA que revise el Plan con esa normativa y esas premisas, y que entregue la documentación revisada en PDF.</div></li>
+<li class="step ia"><div class="dot"><svg role="img" aria-label="IA"><use href="#i-ia"/></svg></div><div class="body"><span class="who ia">IA</span><b>Revisa</b> el Plan de Centro y genera los documentos actualizados.<br><span class="out">Documentación revisada en PDF</span></div></li>
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Comprueban</b> sin IA cada documento que se genera, en pareja y con lecturas compartidas punto a punto, antes de seguir con el siguiente.<br><span class="out">Varias vueltas: la IA propone, la pareja revisa</span></div></li>
+<li class="step docente"><div class="dot"><svg role="img" aria-label="Docente"><use href="#i-docente"/></svg></div><div class="body"><span class="who docente">Docente</span><b>Llevan</b> las modificaciones al claustro para su aprobación.<br><span class="out">Propuesta de Plan de Centro actualizado</span></div></li>
+    </ol>
+    <div class="nota"><b>Qué nos enseña</b>La IA trabaja dentro de un marco que ponen ellos: su documento, su normativa y sus premisas. La revisión se hace sin IA a propósito, y esa decisión también forma parte del flujo.</div>
+  </section>
+
+  <section id="cuatro-d">
+    <h2><span class="num">3</span>Las 4D en este caso</h2>
+    <div class="grid4">
+<div class="card deleg"><h3>Delegación</h3><p>La IA revisó el Plan de Centro con la normativa aportada. La pareja revisó sin IA cada documento generado.</p><div class="nota"><b>Qué nos enseña</b>Decidir qué parte se hace sin IA también es Delegación. En un documento que aprueba el claustro, la última lectura es humana.</div></div>
+<div class="card desc"><h3>Descripción</h3><p>Dieron el Plan, la legislación actualizada, premisas concretas y objetivos claros para evitar y prevenir situaciones no deseadas.</p><div class="nota"><b>Qué nos enseña</b>Aportar la normativa en lugar de dejar que la IA la busque reduce el riesgo de citas inventadas o derogadas.</div></div>
+<div class="card disc"><h3>Discernimiento</h3><p>La comprobación se hizo entre dos personas tras lecturas compartidas, punto a punto.</p><div class="nota"><b>Qué nos enseña</b>Dos lectores encuentran lo que uno solo da por bueno.</div></div>
+<div class="card dili"><h3>Diligencia</h3><p>Pidieron la documentación revisada en PDF y no usaron nombres ni información personal.</p><div class="nota"><b>Qué nos enseña</b>Conviene dejar anotado qué apartados se revisaron con IA: el claustro aprueba sabiendo cómo se hizo.</div></div>
+    </div>
+  </section>
+
+  <section id="prompt">
+    <h2><span class="num">4</span>Cómo lo pidió</h2>
+    <p class="sub" style="margin-bottom:8px">Estructura del encargo, según la descripción de los autores:</p>
+    <div class="prompt"><div><span class="tag t-mat">Material</span>Plan de Centro vigente · legislación actualizada</div><div><span class="tag t-ctx">Contexto</span>actualización y contextualización del Plan de Centro para su aprobación en claustro</div><div><span class="tag t-tarea">Tarea</span>revisar el Plan con la normativa aportada</div><div><span class="tag t-formato">Formato</span>documentación revisada en PDF</div><div><span class="tag t-crit">Criterios</span>premisas concretas · objetivos para evitar y prevenir situaciones no deseadas</div></div>
+    <div class="nota"><b>Si lo pruebas tú</b>pide que cada cambio indique la norma y el artículo que lo justifican. Así la comprobación en BOJA es directa.</div>
+  </section>
+
+  <section id="dua">
+    <h2><span class="num">5</span>Para todo el claustro (DUA)</h2>
+    <div class="dua"><div class="card"><h3>Implicación</h3><ul><li>Trabajo repartido en cinco sesiones, en pareja, con lectura compartida punto a punto.</li><li>La contextualización da a cada cambio una razón práctica, no solo normativa.</li><li>Antes de votar, el claustro tiene un plazo para aportar por el canal que prefiera.</li></ul></div><div class="card"><h3>Representación</h3><ul><li>PDF revisado, acompañado de una tabla de cambios (apartado, texto anterior, texto nuevo y motivo) y un resumen de una página por documento.</li><li>Cambios señalados en el propio texto.</li><li>PDF con títulos y estructura: se lee con lector de pantalla y se amplía sin perder el formato.</li></ul></div><div class="card"><h3>Acción y expresión</h3><ul><li>Cada docente responde en la sesión o por escrito, con comentarios en el documento compartido.</li><li>Las modificaciones se votan por bloques.</li><li>Dudas y acuerdos quedan en el acta: nadie tiene que improvisar en directo.</li></ul></div></div>
+    <p class="ok"><svg aria-hidden="true"><use href="#i-check"/></svg> La tabla de cambios y el resumen acompañan al texto completo, que es lo que se aprueba, y no lo sustituyen. El lenguaje del Plan se mantiene profesional.</p>
+    <p class="sub" style="font-size:12.5px">Marco citado por los autores: Decreto 101/2023, de 9 de mayo (arts. 4.d y 7). Comprobar en BOJA.</p>
+  </section>
+
+  <section id="pruebalo" class="two">
+    <div class="box nota-box">
+      <h2><span class="num">6</span>Pruébalo tú</h2>
+      <ol class="try"><li>Aporta tú el documento vigente y la normativa: no dejes que la IA la busque.</li><li>Trabaja por documentos o apartados y revisa cada uno antes de pasar al siguiente.</li><li>Prepara para el claustro la tabla de cambios y el resumen junto al texto completo.</li></ol>
+    </div>
+    <div class="box nota-box" id="comprueba">
+      <h2><span class="num">7</span>Antes de usarlo, comprueba</h2>
+      <ul class="check"><li>Que cada norma citada existe y está vigente (BOJA/BOE).</li><li>Que no se ha perdido ningún apartado del Plan original.</li><li>Que no aparecen datos personales del profesorado ni del alumnado.</li><li>Que el equipo asume la redacción final, no la IA.</li></ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Plan de Centro actualizado · Grupo de Trabajo "IA en la práctica docente", CEIP San Fernando, curso 2026/2027 · CC BY-NC-SA 4.0. Basado en el marco AI Fluency de R. Dakan y J. Feller (con Anthropic), CC BY-NC-SA 4.0. Elaborado con apoyo de IA generativa; contenido revisado por el profesorado autor.</p>
+    <p>Autoría de la actividad: Mª José Cabeza Mateos y Abraham Rivera Gómez Arevalillo</p>
+  </footer>
+</main>
+</body>
+</html>
